@@ -1,3 +1,4 @@
+import "./App.scss";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
@@ -7,12 +8,30 @@ import Resume from "./containers/resume";
 import Skills from "./containers/skills";
 import Portfolio from "./containers/portfolio";
 import Contact from "./containers/contact";
-import './App.css';
+import Navbar from "./components/navBar";
+import particles from "./utils.js/particles";
 
 function App() {
+  const location = useLocation();
+  console.log(location);
+
+  const handleInit = async (main) => {
+    await loadFull(main);
+  };
+
+  const renderParticleJsInHomePage = location.pathname === "/";
+
   return (
     <div className="App">
-      
+      {/* particles js */}
+
+      {renderParticleJsInHomePage && (
+        <Particles id="particles" options={particles} init={handleInit} />
+      )}
+
+      {/* navbar */}
+      <Navbar />
+
       {/* main page content */}
       <div className="App__main-page-content">
       <Routes>
@@ -24,6 +43,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
       </Routes>
       </div>
+
     </div>
   );
 }
