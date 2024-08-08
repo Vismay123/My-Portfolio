@@ -102,16 +102,15 @@ const Portfolio = () => {
               onMouseLeave={() => handleHover(null)}
             >
               <div className="portfolio__content__cards__item__img-wrapper">
-                <a>
-                  <img alt="dummy data" src={item.image} />
-                </a>
+              <button >
+                 <img alt="dummy data" src={item.image} />
+              </button>
               </div>
               <div className="overlay">
                 {index === hoveredValue && (
                   <div>
                     <p>{item.name}</p>
                     <button onClick={() => handleVisitClick(item.link)}>Visit</button>
-
                   </div>
                 )}
               </div>
