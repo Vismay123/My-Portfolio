@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import { Routes, Route, useLocation } from "react-router-dom";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+import Home from "./containers/home";
+import About from "./containers/about";
+import Resume from "./containers/resume";
+import Skills from "./containers/skills";
+import Portfolio from "./containers/portfolio";
+import Contact from "./containers/contact";
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+      {/* main page content */}
+      <div className="App__main-page-content">
+      <Routes>
+        <Route index path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/resume" element={<Resume />} />
+        <Route path="/skills" element={<Skills />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+      </div>
     </div>
   );
 }
